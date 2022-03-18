@@ -22,7 +22,8 @@
       <button v-on:click="subtract(5)">Subtract 5</button>
       <p v-once>Starting Counter: {{counter}}</p>
       <p>Result: {{ counter }}</p>
-      <input type="text" v-model="name" v-on:keyup.enter="confirmInput" />
+      <input type="text" v-model="name" />
+      <input type="text" v-model="lastName" />
       <!-- <input
         type="text"
         v-bind:value="name"
