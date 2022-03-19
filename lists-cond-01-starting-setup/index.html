@@ -23,7 +23,7 @@
       <p v-if="goals.length===0">
         No goals have been added yet - please start adding some!
       </p>
-      <ul v-else>
+      <ul v-else="goals.length>0">
         <li>Goal</li>
       </ul>
       <p></p>
