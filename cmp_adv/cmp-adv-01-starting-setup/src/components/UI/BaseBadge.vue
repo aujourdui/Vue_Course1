@@ -1,22 +1,22 @@
-<template>
-  <span class="badge" :class="classes">{{ caption }}</span>
-</template>
-
 <script>
 export default {
-  props: ['type', 'caption'],
+  props: ["type", "caption"],
   computed: {
     classes() {
       return {
-        'badge--admin': this.type === 'admin',
-        'badge--author': this.type === 'author',
+        "badge--admin": this.type === "admin",
+        "badge--author": this.type === "author",
       };
     },
   },
 };
 </script>
 
-<style>
+<template>
+  <span class="badge" :class="classes">{{ caption }}</span>
+</template>
+
+<style scoped>
 .badge {
   display: inline-block;
   padding: 0.5rem 1rem;
