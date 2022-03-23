@@ -1,10 +1,8 @@
 <script>
-import StoredResources from './components/learning-resources/StoredResources';
 import TheHeader from './components/layout/TheHeader';
 
 export default {
   components: {
-    StoredResources,
     TheHeader,
   },
   data() {
@@ -30,7 +28,6 @@ export default {
 
 <template>
   <TheHeader title="RememberMe" />
-  <StoredResources :resources="storedResources" />
 </template>
 
 <style>
