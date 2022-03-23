@@ -6,11 +6,12 @@ export default {
       required: false,
     },
   },
+  emit: ['close'],
 };
 </script>
 
 <template>
-  <div></div>
+  <div @click="$emit('close')"></div>
   <dialog open>
     <header>
       <slot name="header">
@@ -19,7 +20,9 @@ export default {
     </header>
     <section><slot></slot></section>
     <menu>
-      <slot name="actions"></slot>
+      <slot name="actions">
+        <BaseButton @click="$emit('close')">Close</BaseButton>
+      </slot>
     </menu>
   </dialog>
 </template>
