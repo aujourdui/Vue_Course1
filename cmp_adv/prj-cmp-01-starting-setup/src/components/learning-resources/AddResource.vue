@@ -30,7 +30,11 @@ export default {
 </script>
 
 <template>
-  <BaseDialog v-if="inputIsInvalid" title="Input is invalid">
+  <BaseDialog
+    v-if="inputIsInvalid"
+    title="Input is invalid"
+    @close="confirmError"
+  >
     <template #default>
       <p>unfortunately, at least one input is invalid</p>
       <p>
