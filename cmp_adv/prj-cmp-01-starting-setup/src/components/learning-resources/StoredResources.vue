@@ -1,5 +1,5 @@
 <script>
-import LearningResource from './LearningResource.vue';
+import LearningResource from './LearningResource';
 
 export default {
   props: ['resources'],
@@ -20,3 +20,13 @@ export default {
     />
   </ul>
 </template>
+
+<style scoped>
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin: auto;
+  max-width: 40rem;
+}
+</style>
