@@ -6,6 +6,8 @@ import TeamsList from './components/teams/TeamsList';
 import UsersList from './components/users/UsersList';
 import TeamMembers from './components/teams/TeamMembers';
 // import NotFound from './components/nav/NotFound';
+import TeamsFooter from './components/teams/TeamsFooter';
+import UsersFooter from './components/users/UsersFooter';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -14,7 +16,8 @@ const router = createRouter({
     {
       name: 'teams',
       path: '/teams',
-      component: TeamsList,
+      // component: TeamsList,
+      components: { default: TeamsList, footer: TeamsFooter },
       children: [
         {
           name: 'team-members',
@@ -25,7 +28,8 @@ const router = createRouter({
       ], // /teams/t1
     },
     // { path: '/teams', component: TeamsList, alias: '/' },
-    { path: '/users', component: UsersList },
+    // { path: '/users', component: UsersList },
+    { path: '/users', components: { default: UsersList, footer: UsersFooter } },
     { path: '/teams/:teamId', component: TeamMembers, props: true },
     // { path: '/:notFound(.*)', redirect: '/teams' },
   ],
