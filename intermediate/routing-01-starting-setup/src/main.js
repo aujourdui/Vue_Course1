@@ -31,9 +31,16 @@ const router = createRouter({
     // { path: '/users', component: UsersList },
     { path: '/users', components: { default: UsersList, footer: UsersFooter } },
     { path: '/teams/:teamId', component: TeamMembers, props: true },
-    // { path: '/:notFound(.*)', redirect: '/teams' },
+    // { path: '/:notFound(.*)', component: NotFound },
   ],
   linkActiveClass: 'active',
+  scrollBehavior(to, from, savePosition) {
+    console.log(to, from, savePosition);
+    if (savePosition) {
+      return savePosition;
+    }
+    return { left: 0, top: 0 };
+  },
 });
 
 const app = createApp(App);
