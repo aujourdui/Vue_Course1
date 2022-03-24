@@ -50,7 +50,7 @@ export default {
         :role="member.role"
       ></user-item>
     </ul>
-    <RouterLink :to="'/teams/' + teamId">Go to team2</RouterLink>
+    <RouterLink to="/teams/2">Go to team2</RouterLink>
   </section>
 </template>
 
