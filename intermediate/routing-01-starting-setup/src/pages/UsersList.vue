@@ -1,5 +1,5 @@
 <script>
-import UserItem from './UserItem.vue';
+import UserItem from '../components/users/UserItem';
 
 export default {
   components: {
