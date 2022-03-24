@@ -1,16 +1,16 @@
+<script>
+export default {
+  props: ['id', 'name', 'memberCount'],
+};
+</script>
+
 <template>
   <li>
     <h3>{{ name }}</h3>
     <div class="team-members">{{ memberCount }} Members</div>
-    <a href="#">View Members</a>
+    <RouterLink :to="'/teams/' + id">View Members</RouterLink>
   </li>
 </template>
-
-<script>
-export default {
-  props: ['name', 'memberCount'],
-};
-</script>
 
 <style scoped>
 li {
