@@ -86,9 +86,11 @@ export default {
 </script>
 
 <template>
-  <Transition name="route">
-    <RouterView />
-  </Transition>
+  <RouterView #default="slotProps">
+    <Transition name="fade-button" mode="out-in">
+      <component :is="slotProps.Component"></component>
+    </Transition>
+  </RouterView>
 </template>
 
 <style>
