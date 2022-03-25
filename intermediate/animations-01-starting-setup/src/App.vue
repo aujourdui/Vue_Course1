@@ -35,9 +35,18 @@ export default {
       console.log('beforeLeave');
       console.log(el);
     },
-    leave(el) {
+    leave(el, done) {
       console.log('leave');
       console.log(el);
+      let round = 1;
+      const interval = setInterval(() => {
+        el.style.opacity = 1 - 0.01 * round;
+        round++;
+        if (round < 0) {
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
     },
     afterLeave(el) {
       console.log('afterLeave');
@@ -77,6 +86,7 @@ export default {
       @enter="enter"
       @after-enter="afterEnter"
       @before-leave="beforeLeave"
+      @leave="leave"
     >
       <!-- <Transition enter-to-class="some-class" enter-active-class="..."> when we want to use 3re party library -->
       <p v-if="paraIsVisible">This is only sometimes visible...</p>
