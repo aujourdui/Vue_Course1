@@ -5,9 +5,16 @@ export default {
       animatedBlock: false,
       dialogIsVisible: false,
       paraIsVisible: false,
+      usersAreVisible: false,
     };
   },
   methods: {
+    showUsers() {
+      this.usersAreVisible = true;
+    },
+    hideUsers() {
+      this.usersAreVisible = false;
+    },
     showDialog() {
       this.dialogIsVisible = true;
     },
@@ -20,6 +27,30 @@ export default {
     toggleParagraph() {
       this.paraIsVisible = !this.paraIsVisible;
     },
+    beforeEnter(el) {
+      console.log('beforeEnter');
+      console.log(el);
+    },
+    enter(el) {
+      console.log('enter');
+      console.log(el);
+    },
+    afterEnter(el) {
+      console.log('afterEnter');
+      console.log(el);
+    },
+    beforeLeave(el) {
+      console.log('beforeLeave');
+      console.log(el);
+    },
+    leave(el) {
+      console.log('leave');
+      console.log('el');
+    },
+    afterLeave(el) {
+      console.log('afterLeave');
+      console.log(el);
+    },
   },
 };
 </script>
@@ -30,12 +61,27 @@ export default {
     <button @click="animateBlock">Animate</button>
   </div>
   <div class="container">
-    <Transition>
+    <Transition
+      name="para"
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @before-leave="beforeLeave"
+    >
+      <!-- <Transition enter-to-class="some-class" enter-active-class="..."> when we want to use 3re party library -->
       <p v-if="paraIsVisible">This is only sometimes visible...</p>
     </Transition>
     <button @click="toggleParagraph">Toggle Paragraph</button>
   </div>
-  <base-modal @close="hideDialog" v-if="dialogIsVisible">
+  <div class="container">
+    <Transition name="fade-button" mode="out-in">
+      <button @click="showUsers" v-if="!usersAreVisible">Show Users</button>
+      <button @click="hideUsers" v-else>Hide Users</button>
+      <!-- <button @click="hideUsers" v-if="usersAreVisible">Hide Users</button> -->
+    </Transition>
+  </div>
+  <!-- <base-modal @close="hideDialog" v-if="dialogIsVisible"> -->
+  <base-modal @close="hideDialog" :open="dialogIsVisible">
     <p>This is a test dialog!</p>
     <button @click="hideDialog">Close it!</button>
   </base-modal>
@@ -91,35 +137,51 @@ button:active {
   animation: slide-fade 0.3s ease-out forwards;
 }
 
-.v-enter-from {
+.para-enter-from {
   /* opacity: 0;
   transform: translateY(-30px); */
 }
-.v-enter-active {
+.para-enter-active {
   /* transition: all 0.3s ease-out;
    */
-  animation: slide-scale 0.3s ease-out;
+  animation: slide-scale 2s ease-out;
 }
-.v-enter-to {
+.para-enter-to {
   /* opacity: 1;
   transform: translateY(0); */
 }
 
-.v-leave-from {
+.para-leave-from {
   /* opacity: 1;
   transform: translateY(0); */
 }
 
-.v-leave-active {
+.para-leave-active {
   /* transition: all 0.3s ease-in;
   */
   animation: slide-scale 0.3s ease-out;
 }
 
-.v-leave-to {
+.para-leave-to {
   /* opacity: 0;
   transform: translateY(30px); */
 }
+
+.fade-button-enter-from,
+.fade-button-leave-to {
+  opacity: 0;
+}
+.fade-button-enter-active {
+  transition: opacity 0.3s ease-out;
+}
+.fade-button-leave-active {
+  transition: opacity 0.3s ease-in;
+}
+.fade-button-enter-to,
+.fade-button-leave-from {
+  opacity: 1;
+}
+
 @keyframes slide-scale {
   0% {
     transform: translateX(0) scale(1);
