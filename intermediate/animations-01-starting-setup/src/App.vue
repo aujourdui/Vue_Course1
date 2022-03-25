@@ -1,10 +1,5 @@
 <script>
-import UsersList from './components/UsersList';
-
 export default {
-  components: {
-    UsersList,
-  },
   data() {
     return {
       animatedBlock: false,
@@ -91,44 +86,9 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <UsersList />
-  </div>
-  <div class="container">
-    <div :class="{ animate: animatedBlock }" class="block"></div>
-    <button @click="animateBlock">Animate</button>
-  </div>
-  <div class="container">
-    <Transition
-      :css="false"
-      @before-enter="beforeEnter"
-      @enter="enter"
-      @after-enter="afterEnter"
-      @before-leave="beforeLeave"
-      @leave="leave"
-      @enter-cancelled="enterCancelled"
-      @leave-cancelled="leaveCancelled"
-    >
-      <!-- <Transition enter-to-class="some-class" enter-active-class="..."> when we want to use 3re party library -->
-      <p v-if="paraIsVisible">This is only sometimes visible...</p>
-    </Transition>
-    <button @click="toggleParagraph">Toggle Paragraph</button>
-  </div>
-  <div class="container">
-    <Transition name="fade-button" mode="out-in">
-      <button @click="showUsers" v-if="!usersAreVisible">Show Users</button>
-      <button @click="hideUsers" v-else>Hide Users</button>
-      <!-- <button @click="hideUsers" v-if="usersAreVisible">Hide Users</button> -->
-    </Transition>
-  </div>
-  <!-- <base-modal @close="hideDialog" v-if="dialogIsVisible"> -->
-  <base-modal @close="hideDialog" :open="dialogIsVisible">
-    <p>This is a test dialog!</p>
-    <button @click="hideDialog">Close it!</button>
-  </base-modal>
-  <div class="container">
-    <button @click="showDialog">Show Dialog</button>
-  </div>
+  <Transition name="route">
+    <RouterView />
+  </Transition>
 </template>
 
 <style>
@@ -191,6 +151,14 @@ button:active {
 .fade-button-enter-to,
 .fade-button-leave-from {
   opacity: 1;
+}
+
+.route-enter-active {
+  animation: slide-scale 0.4s ease-out;
+}
+
+.route-leave-active {
+  animation: slide-scale 0.4s ease-in;
 }
 
 @keyframes slide-scale {
