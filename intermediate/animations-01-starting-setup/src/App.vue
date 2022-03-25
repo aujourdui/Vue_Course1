@@ -1,5 +1,10 @@
 <script>
+import UsersList from './components/UsersList';
+
 export default {
+  components: {
+    UsersList,
+  },
   data() {
     return {
       animatedBlock: false,
@@ -86,6 +91,9 @@ export default {
 </script>
 
 <template>
+  <div class="container">
+    <UsersList />
+  </div>
   <div class="container">
     <div :class="{ animate: animatedBlock }" class="block"></div>
     <button @click="animateBlock">Animate</button>
