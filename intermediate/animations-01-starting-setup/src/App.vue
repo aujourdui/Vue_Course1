@@ -92,7 +92,7 @@ export default {
   </div>
   <div class="container">
     <Transition
-      name="para"
+      :css="false"
       @before-enter="beforeEnter"
       @enter="enter"
       @after-enter="afterEnter"
