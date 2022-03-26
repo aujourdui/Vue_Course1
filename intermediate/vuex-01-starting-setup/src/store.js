@@ -1,4 +1,6 @@
-export const counterModule = {
+import { createStore } from 'vuex';
+
+const counterModule = {
   namespaced: true,
   state() {
     return {
@@ -45,7 +47,10 @@ export const counterModule = {
   },
 };
 
-export const authModule = {
+const store = createStore({
+  modules: {
+    numbers: counterModule,
+  },
   state() {
     return {
       isLoggedIn: false,
@@ -69,4 +74,6 @@ export const authModule = {
       return state.isLoggedIn;
     },
   },
-};
+});
+
+export default store;
