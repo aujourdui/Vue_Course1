@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 import { createStore } from 'vuex';
-import { counterModule, authModule } from './module';
+import { counterModule } from './module';
+import { authModule } from './module';
 
 import App from './App.vue';
 
