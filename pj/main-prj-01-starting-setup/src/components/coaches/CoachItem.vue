@@ -25,8 +25,10 @@ export default {
       </span>
     </div>
     <div class="actions">
-      <RouterLink :to="coachContactLink">Contact</RouterLink>
-      <RouterLink :to="coachDetailsLink">view Details</RouterLink>
+      <BaseButton mode="outline" link :to="coachContactLink"
+        >Contact</BaseButton
+      >
+      <BaseButton link :to="coachDetailsLink">view Details</BaseButton>
     </div>
   </li>
 </template>
