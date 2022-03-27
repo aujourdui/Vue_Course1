@@ -5,6 +5,11 @@ export default {
   components: {
     CoachForm,
   },
+  methods: {
+    saveData(data) {
+      this.$store.dispatch('coaches/registerCoach', data); //this is an action name
+    },
+  },
 };
 </script>
 
@@ -12,7 +17,7 @@ export default {
   <section>
     <BaseCard>
       <h2>Register as a coach</h2>
-      <CoachForm />
+      <CoachForm @save-data="saveData" />
     </BaseCard>
   </section>
 </template>
