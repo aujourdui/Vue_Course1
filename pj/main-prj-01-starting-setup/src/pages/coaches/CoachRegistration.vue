@@ -8,6 +8,7 @@ export default {
   methods: {
     saveData(data) {
       this.$store.dispatch('coaches/registerCoach', data); //this is an action name
+      this.$router.replace('/coaches');
     },
   },
 };
