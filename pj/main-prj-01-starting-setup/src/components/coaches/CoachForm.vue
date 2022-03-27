@@ -10,6 +10,7 @@ export default {
     };
   },
   methods: {
+    emits: ['save-data'],
     submitForm() {
       const formData = {
         first: this.firstName,
@@ -18,15 +19,15 @@ export default {
         rate: this.rate,
         areas: this.areas,
       };
-      console.log(formData);
+      this.$emit('save-data', formData);
     },
   },
 };
 </script>
 
 <template>
-  <form>
-    <div @submit.prevent="submitForm" class="form-control">
+  <form @submit.prevent="submitForm">
+    <div class="form-control">
       <label for="firstname">Firstname</label>
       <input type="text" id="firstname" v-model.trim="firstName" />
     </div>
@@ -40,7 +41,7 @@ export default {
     </div>
     <div class="form-control">
       <label for="rate">Hourly Rate</label>
-      <input type="number" id="rate" v-model.number="rate" v-model="areas" />
+      <input type="number" id="rate" v-model.number="rate" />
     </div>
     <div class="form-control">
       <h3>Area of Expertise</h3>
@@ -53,7 +54,7 @@ export default {
         <label for="backend">Backend Development</label>
       </div>
       <div>
-        <input type="checkbox" id="career" value="career" />
+        <input type="checkbox" id="career" value="career" v-model="areas" />
         <label for="career">Career Advisory</label>
       </div>
     </div>
