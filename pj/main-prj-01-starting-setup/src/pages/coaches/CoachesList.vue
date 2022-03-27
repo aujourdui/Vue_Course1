@@ -1,4 +1,12 @@
 <template>
   <section>FILTER</section>
-  <section>LIST OF COACHES</section>
+  <section>
+    <div class="controls">
+      <button>Refresh</button>
+      <RouterLink to="./register">Register as Coach</RouterLink>
+    </div>
+    <ul>
+      LIST OF COACHES
+    </ul>
+  </section>
 </template>
