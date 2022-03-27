@@ -17,6 +17,9 @@ export default {
     };
   },
   computed: {
+    isCoach() {
+      return this.$store.getters['coaches/isCoach'];
+    },
     filteredCoaches() {
       const coaches = this.$store.getters['coaches/coaches'];
       return coaches.filter((coach) => {
@@ -50,7 +53,9 @@ export default {
     <BaseCard>
       <div class="controls">
         <BaseButton mode="outline">Refresh</BaseButton>
-        <BaseButton link to="./register">Register as Coach</BaseButton>
+        <BaseButton v-if="!isCoach" link to="./register"
+          >Register as Coach</BaseButton
+        >
       </div>
       <ul v-if="hasCoaches">
         <CoachItem
