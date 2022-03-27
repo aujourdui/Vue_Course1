@@ -19,22 +19,24 @@ export default {
 <template>
   <section>FILTER</section>
   <section>
-    <div class="controls">
-      <button>Refresh</button>
-      <RouterLink to="./register">Register as Coach</RouterLink>
-    </div>
-    <ul v-if="hasCoaches">
-      <CoachItem
-        v-for="coach in filteredCoaches"
-        :key="coach.id"
-        :id="coach.id"
-        :first-name="coach.firstName"
-        :last-name="coach.lastName"
-        :rate="coach.hourlyRate"
-        :areas="coach.areas"
-      ></CoachItem>
-    </ul>
-    <h3 v-else>No coaches found</h3>
+    <BaseCard>
+      <div class="controls">
+        <button>Refresh</button>
+        <RouterLink to="./register">Register as Coach</RouterLink>
+      </div>
+      <ul v-if="hasCoaches">
+        <CoachItem
+          v-for="coach in filteredCoaches"
+          :key="coach.id"
+          :id="coach.id"
+          :first-name="coach.firstName"
+          :last-name="coach.lastName"
+          :rate="coach.hourlyRate"
+          :areas="coach.areas"
+        ></CoachItem>
+      </ul>
+      <h3 v-else>No coaches found</h3>
+    </BaseCard>
   </section>
 </template>
 
