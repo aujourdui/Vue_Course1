@@ -7,7 +7,7 @@ export default {
   },
   computed: {
     receivedRequests() {
-      return this.$store.getters['requests/requests'];
+      return this.$store.getters['requests/requests']; // Don't forget return
     },
     hasRequests() {
       return this.$store.getters['requests/hasRequests'];
