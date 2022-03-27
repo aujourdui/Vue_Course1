@@ -10,7 +10,9 @@ export default {
 
 <template>
   <section>
-    <h2>Register as a coach</h2>
-    <CoachForm />
+    <BaseCard>
+      <h2>Register as a coach</h2>
+      <CoachForm />
+    </BaseCard>
   </section>
 </template>
