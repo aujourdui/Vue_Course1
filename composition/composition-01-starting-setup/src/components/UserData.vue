@@ -1,19 +1,23 @@
 <script>
-import { computed } from 'vue';
+import { computed, inject } from 'vue';
 
 export default {
-  props: ['firstName', 'lastName', 'age'],
-  setup(props, context) {
+  props: ['firstName', 'lastName'],
+  // setup(props, context) {    // to use emit
+  setup(props) {
     // const age = ref('age');
     // const fName = re
     const userName = computed(() => {
       return props.firstName + ' ' + props.lastName;
     });
 
-    context.emit('save-data', 1); // this.$emit("save-data", 1)
+    const age = inject('userAge');
+
+    //context.emit('save-data', 1); // this.$emit("save-data", 1)
 
     return {
       userName,
+      age,
     };
   },
   // computed: {
