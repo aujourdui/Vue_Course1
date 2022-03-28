@@ -3,12 +3,14 @@ import { computed } from 'vue';
 
 export default {
   props: ['firstName', 'lastName', 'age'],
-  setup(props) {
+  setup(props, context) {
     // const age = ref('age');
     // const fName = re
     const userName = computed(() => {
       return props.firstName + ' ' + props.lastName;
     });
+
+    context.emit('save-data', 1); // this.$emit("save-data", 1)
 
     return {
       userName,
