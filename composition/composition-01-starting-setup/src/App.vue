@@ -1,5 +1,5 @@
 <script>
-import { ref, computed } from 'vue';
+import { ref, computed, provide } from 'vue';
 import UserData from './components/UserData';
 
 export default {
@@ -9,6 +9,8 @@ export default {
   setup() {
     // const uName = ref('Maximilian');
     const uAge = ref(31);
+
+    provide('userAge', uAge);
 
     const firstName = ref('');
     const lastName = ref('');
@@ -69,7 +71,7 @@ export default {
 
 <template>
   <section class="container">
-    <UserData :first-name="firstName" :last-name="lastName" :age="age" />
+    <UserData :first-name="firstName" :last-name="lastName" />
     <button @click="setAge">Change age</button>
     <div>
       <input type="text" placeholder="First Name" v-model="firstName" />
