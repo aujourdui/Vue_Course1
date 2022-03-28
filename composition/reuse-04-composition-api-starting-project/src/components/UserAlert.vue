@@ -1,3 +1,17 @@
+<script>
+export default {
+  props: ['title'],
+  emits: ['close'],
+  setup(_, context) {
+    function closeDialog() {
+      context.emit('close');
+    }
+
+    return { closeDialog };
+  },
+};
+</script>
+
 <template>
   <div class="backdrop" @click="closeDialog"></div>
   <dialog open>
@@ -12,20 +26,6 @@
     </menu>
   </dialog>
 </template>
-
-<script>
-export default {
-  props: ['title'],
-  emits: ['close'],
-  setup(_, context) {
-    function closeDialog() {
-      context.emit('close');
-    }
-
-    return { closeDialog };
-  },
-};
-</script>
 
 <style scoped>
 .backdrop {
