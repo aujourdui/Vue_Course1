@@ -1,5 +1,5 @@
 <script>
-import { inject } from 'vue';
+import { inject, computed } from 'vue';
 
 export default {
   props: ['pid'],
@@ -10,13 +10,19 @@ export default {
     // const price = ref(null);
     // const description = ref('');
 
-    const selectedProduct = products.value.find(
-      (product) => product.id === props.pid
-    );
+    const selectedProduct = computed(() => {
+      return products.value.find((product) => product.id === props.pid);
+    });
 
-    const title = selectedProduct.title;
-    const price = selectedProduct.price;
-    const description = selectedProduct.description;
+    const title = computed(() => {
+      return selectedProduct.value.title;
+    });
+    const price = computed(() => {
+      return selectedProduct.value.price;
+    });
+    const description = computed(() => {
+      return selectedProduct.value.description;
+    });
 
     return { title, price, description };
   },
