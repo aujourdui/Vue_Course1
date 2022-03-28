@@ -31,11 +31,17 @@ export default {
         this.email === '' ||
         !this.email.includes('@') ||
         this.password.length < 6
-      ) {
+      ) else {
         this.formIsValid = false;
         return;
       }
-      // sent http Request
+      if (this.mode === 'login') {
+      } else {
+        this.$store.dispatch('signup', {
+          email: this.email,
+          password: this.password,
+        });
+      }
     },
     switchAuthMode() {
       if (this.mode === 'login') {
