@@ -1,38 +1,44 @@
 <script>
-import { reactive } from 'vue';
+import { ref } from 'vue';
 
 export default {
   setup() {
-    // const uName = ref('Maximilian');
-    // const uAge = ref(31);
-    const user = reactive({
-      name: 'Maximilian',
-      age: 31,
-    });
+    const uName = ref('Maximilian');
+    const uAge = ref(31);
+    // const user = reactive({
+    //   name: 'Maximilian',
+    //   age: 31,
+    // });
 
-    setTimeout(function () {
-      // uName.value = 'Max';
-      // uAge.value = 32;
-      user.name = 'Max';
-      user.age = 32;
-    }, 2000);
+    const setNewAge = () => {
+      uAge.value = 33;
+    };
 
     return {
-      user: user,
+      userName: uName,
+      age: uAge,
+      setAge: setNewAge,
     };
   },
   // data() {
   //   return {
   //     userName: 'Maximilian',
+  //     age: 31
   //   };
+  // },
+  // methods: {
+  //   setNewAge() {
+  //     this.age = 32;
+  //   },
   // },
 };
 </script>
 
 <template>
   <section class="container">
-    <h2>{{ user.name }}</h2>
-    <p>{{ user.age }}</p>
+    <h2>{{ userName }}</h2>
+    <p>{{ age }}</p>
+    <button @click="setAge">Change age</button>
   </section>
 </template>
 
