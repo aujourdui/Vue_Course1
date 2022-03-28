@@ -1,13 +1,18 @@
 <script>
-import { ref, computed, watch } from 'vue';
+import { ref, computed } from 'vue';
+import UserData from './components/UserData';
 
 export default {
+  components: {
+    UserData,
+  },
   setup() {
     // const uName = ref('Maximilian');
     const uAge = ref(31);
 
     const firstName = ref('');
     const lastName = ref('');
+    const lastNameInput = ref(null);
     // const user = reactive({
     //   name: 'Maximilian',
     //   age: 31,
@@ -17,15 +22,20 @@ export default {
       return firstName.value + ' ' + lastName.value;
     });
 
-    watch([uAge, uName], (newValues, oldValues) => {
-      console.log('old age ' + oldValues[0]);
-      console.log('New age ' + newValues[0]);
-      console.log('old name ' + oldValues[1]);
-      console.log('New name ' + newValues[1]);
-    });
+    // watch([uAge, uName], (newValues, oldValues) => {
+    //   console.log('old age ' + oldValues[0]);
+    //   console.log('New age ' + newValues[0]);
+    //   console.log('old name ' + oldValues[1]);
+    //   console.log('New name ' + newValues[1]);
+    // });
 
     const setNewAge = () => {
       uAge.value = 33;
+    };
+
+    const setLastName = () => {
+      // lastName.value = this.$refs.lastNameInput.value;   // option API
+      lastName.value = lastNameInput.value.value;
     };
 
     return {
@@ -34,6 +44,8 @@ export default {
       setAge: setNewAge,
       firstName,
       lastName,
+      lastNameInput,
+      setLastName,
     };
   },
   // data() {
@@ -57,12 +69,12 @@ export default {
 
 <template>
   <section class="container">
-    <h2>{{ userName }}</h2>
-    <p>{{ age }}</p>
+    <UserData :first-name="firstName" :last-name="lastName" :age="age" />
     <button @click="setAge">Change age</button>
     <div>
       <input type="text" placeholder="First Name" v-model="firstName" />
-      <input type="text" placeholder="Last Name" v-model="lastName" />
+      <input type="text" placeholder="Last Name" ref="lastNameInput" />
+      <button @click="setLastName">Set Last Name</button>
     </div>
   </section>
 </template>
