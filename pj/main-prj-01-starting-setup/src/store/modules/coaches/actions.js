@@ -33,7 +33,7 @@ export default {
       return;
     }
     const response = await fetch(
-      `https://vue-coach-search-default-rtdb.firebaseio.com/coaches.jso`
+      `https://vue-coach-search-default-rtdb.firebaseio.com/coaches.json`
     );
     const responseData = await response.json();
 
