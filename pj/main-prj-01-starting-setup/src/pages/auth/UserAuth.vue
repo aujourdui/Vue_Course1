@@ -66,7 +66,7 @@ export default {
         <input type="password" id="password" v-model.trim="password" />
       </div>
       <p v-if="!formIsValid">
-        Please enter a valid email and password (must be at least 6 characters
+        Please enter the valid email and password (must be at least 6 characters
         long)
       </p>
       <BaseButton>{{ submitButtonCaption }}</BaseButton>
