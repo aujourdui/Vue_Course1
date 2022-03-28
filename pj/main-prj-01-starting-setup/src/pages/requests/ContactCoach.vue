@@ -40,7 +40,7 @@ export default {
       <textarea id="message" rows="5" v-model.trim="message"></textarea>
     </div>
     <p class="errors" v-if="!formIsValid">
-      Please enter a valid email and non-empty message.
+      Please input a valid email and non-empty message.
     </p>
     <div class="actions">
       <BaseButton>Send Message</BaseButton>
