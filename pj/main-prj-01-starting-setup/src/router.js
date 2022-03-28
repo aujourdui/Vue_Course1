@@ -7,6 +7,7 @@ import CoachesList from './pages/coaches/CoachesList';
 // import RequestReceived from './pages/requests/RequestReceived';
 import NotFound from './pages/NotFound';
 
+
 const CoachDetail = () => import('./pages/coaches/CoachDetail');
 const CoachRegistration = () => import('./pages/coaches/CoachRegistration');
 const ContactCoach = () => import('./pages/requests/ContactCoach');
@@ -25,7 +26,8 @@ const router = createRouter({
     },
     { path: '/register', component: CoachRegistration },
     { path: '/requests', component: RequestReceived },
-    { path: '/:notFound(.*)', component: NotFound },
+    { path: '/auth', component: UserAuth },
+    // { path: '/:notFound(.*)', component: NotFound },
   ],
 });
 
