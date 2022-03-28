@@ -29,6 +29,9 @@ export default {
     });
   },
   async loadCoaches(context, payload) {
+    if (!payload.forceRefresh && !context.getters.shouldUpdate) {
+      return;
+    }
     const response = await fetch(
       `https://vue-coach-search-default-rtdb.firebaseio.com/coaches.json`
     );
@@ -54,5 +57,6 @@ export default {
     }
 
     context.commit('setCoaches', coaches);
+    context.commit('setFetchTimestamp');
   },
 };
